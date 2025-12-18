@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #e0e0e0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00ff88;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  font-size: 2rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #7b8cde;
+  font-size: 1.2rem;
+}
+
+/* Oscilloscope */
+.oscilloscope-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#oscilloscope {
+  border: 3px solid #3a3a5c;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Controls */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+  background: rgba(30, 30, 60, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #3a3a5c;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.control-group label {
+  font-size: 0.9rem;
+  color: #a0a0c0;
+}
+
+.control-group select,
+.control-group input[type="range"] {
+  width: 100%;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #4a4a7a;
+  background: #2a2a4a;
+  color: #e0e0e0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  background: #2a2a4a;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #00ff88;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Keyboard Section */
+.keyboard-section {
+  margin-bottom: 20px;
+}
+
+.instructions {
+  text-align: center;
+  color: #888;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.keyboard {
+  position: relative;
+  width: 700px;
+  height: 180px;
+  margin: 0 auto;
+}
+
+.white-keys {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.black-keys {
+  position: absolute;
+  top: 0;
+}
+
+.key {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.key.white {
+  width: 70px;
+  height: 180px;
+  background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
+  border: 1px solid #999;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.key.white:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+}
+
+.key.white.active {
+  background: linear-gradient(180deg, #00ff88 0%, #00cc6a 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(0, 255, 136, 0.5);
+  transform: translateY(2px);
+}
+
+.key.black {
+  position: absolute;
+  width: 45px;
+  height: 110px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%);
+  border-radius: 0 0 5px 5px;
+  z-index: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.key.black:hover {
+  background: linear-gradient(180deg, #4a4a4a 0%, #2a2a2a 100%);
+}
+
+.key.black.active {
+  background: linear-gradient(180deg, #00cc6a 0%, #008844 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 255, 136, 0.5);
+  transform: translateY(2px);
+}
+
+.key .note-name {
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.key.white .note-name {
+  color: #333;
+}
+
+.key.black .note-name {
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.key .key-hint {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.key.white .key-hint {
+  color: #666;
+}
+
+.key.black .key-hint {
+  color: #aaa;
+}
+
+/* Current Note Display */
+.current-note {
+  text-align: center;
+  padding: 15px;
+  background: rgba(30, 30, 60, 0.5);
+  border-radius: 10px;
+  border: 1px solid #3a3a5c;
+  font-size: 1.1rem;
+}
+
+.current-note span:nth-child(2),
+.current-note span:nth-child(4) {
+  color: #00ff88;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 750px) {
+  .keyboard {
+    transform: scale(0.8);
+    transform-origin: top center;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

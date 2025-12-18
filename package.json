@@ -1,0 +1,15 @@
+{
+  "name": "oscilloscope-synth",
+  "version": "1.0.0",
+  "description": "An Electron oscilloscope synthesizer with keyboard control",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": ["electron", "synthesizer", "oscilloscope", "audio"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0"
+  }
+}

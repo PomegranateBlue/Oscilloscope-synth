@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oscilloscope Synth</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Oscilloscope Synth</h1>
+
+    <div class="oscilloscope-container">
+      <canvas id="oscilloscope" width="800" height="300"></canvas>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label for="waveform">Waveform:</label>
+        <select id="waveform">
+          <option value="sine">Sine</option>
+          <option value="square">Square</option>
+          <option value="sawtooth">Sawtooth</option>
+          <option value="triangle">Triangle</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="baseFrequency">Base Frequency: <span id="freqValue">261.63</span> Hz</label>
+        <input type="range" id="baseFrequency" min="50" max="1000" value="261.63" step="1">
+      </div>
+
+      <div class="control-group">
+        <label for="volume">Volume: <span id="volValue">50</span>%</label>
+        <input type="range" id="volume" min="0" max="100" value="50">
+      </div>
+
+      <div class="control-group">
+        <label for="attack">Attack: <span id="attackValue">0.1</span>s</label>
+        <input type="range" id="attack" min="0.01" max="1" value="0.1" step="0.01">
+      </div>
+
+      <div class="control-group">
+        <label for="release">Release: <span id="releaseValue">0.3</span>s</label>
+        <input type="range" id="release" min="0.01" max="2" value="0.3" step="0.01">
+      </div>
+    </div>
+
+    <div class="keyboard-section">
+      <h2>Keyboard</h2>
+      <p class="instructions">Press keys A, S, D, F, G, H, J, K, L, ;, W, E to play notes (C4 to B4)</p>
+      <div class="keyboard">
+        <div class="white-keys">
+          <div class="key white" data-note="C" data-key="A">
+            <span class="note-name">C</span>
+            <span class="key-hint">A</span>
+          </div>
+          <div class="key white" data-note="D" data-key="S">
+            <span class="note-name">D</span>
+            <span class="key-hint">S</span>
+          </div>
+          <div class="key white" data-note="E" data-key="D">
+            <span class="note-name">E</span>
+            <span class="key-hint">D</span>
+          </div>
+          <div class="key white" data-note="F" data-key="F">
+            <span class="note-name">F</span>
+            <span class="key-hint">F</span>
+          </div>
+          <div class="key white" data-note="G" data-key="G">
+            <span class="note-name">G</span>
+            <span class="key-hint">G</span>
+          </div>
+          <div class="key white" data-note="A" data-key="H">
+            <span class="note-name">A</span>
+            <span class="key-hint">H</span>
+          </div>
+          <div class="key white" data-note="B" data-key="J">
+            <span class="note-name">B</span>
+            <span class="key-hint">J</span>
+          </div>
+          <div class="key white" data-note="C5" data-key="K">
+            <span class="note-name">C5</span>
+            <span class="key-hint">K</span>
+          </div>
+          <div class="key white" data-note="D5" data-key="L">
+            <span class="note-name">D5</span>
+            <span class="key-hint">L</span>
+          </div>
+          <div class="key white" data-note="E5" data-key=";">
+            <span class="note-name">E5</span>
+            <span class="key-hint">;</span>
+          </div>
+        </div>
+        <div class="black-keys">
+          <div class="key black" data-note="C#" data-key="W" style="left: 45px;">
+            <span class="note-name">C#</span>
+            <span class="key-hint">W</span>
+          </div>
+          <div class="key black" data-note="D#" data-key="E" style="left: 115px;">
+            <span class="note-name">D#</span>
+            <span class="key-hint">E</span>
+          </div>
+          <div class="key black" data-note="F#" data-key="T" style="left: 255px;">
+            <span class="note-name">F#</span>
+            <span class="key-hint">T</span>
+          </div>
+          <div class="key black" data-note="G#" data-key="Y" style="left: 325px;">
+            <span class="note-name">G#</span>
+            <span class="key-hint">Y</span>
+          </div>
+          <div class="key black" data-note="A#" data-key="U" style="left: 395px;">
+            <span class="note-name">A#</span>
+            <span class="key-hint">U</span>
+          </div>
+          <div class="key black" data-note="C#5" data-key="O" style="left: 535px;">
+            <span class="note-name">C#5</span>
+            <span class="key-hint">O</span>
+          </div>
+          <div class="key black" data-note="D#5" data-key="P" style="left: 605px;">
+            <span class="note-name">D#5</span>
+            <span class="key-hint">P</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="current-note">
+      <span>Current Note: </span><span id="currentNote">-</span>
+      <span> | Frequency: </span><span id="currentFreq">-</span> Hz
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
